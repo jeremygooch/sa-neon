@@ -1,0 +1,35 @@
+* New CSS Architecture
+** Concepts
+*** Open/Closed Principal
+The open/closed principal for CSS is an idea lifted from OOP patterns. The concept is that certain CSS is closed for modification but open for extension. This pricincipal applies to the definitions in _base, _layout, as well as the styles under the utilities/ directory.
+
+*** SMACSS and OOCSS
+The overall structure of our SASS uses SMACS Categorization as well as OOCSS best practices. We are able to use this approach because SMACSS and OOCSS are not mutually exclusive, and rather than using one or the other to the bitter end, by combining both approaches we can use the best from each as it fits our needs.
+
+From a high level, we organize most of our base sass structure using SMACSS categorization, and use a combination of helper/utility classes in order to help maintain DRY stylesheets. 
+
+**** SMACSS Categorization
+*Base* is where resets, element defaults, default font sizes, etc live. Should not contain class or ID selectors. You should always consider if a ruleset must be in base in order to not loose flexibility later.
+
+*Layout* Divide the page into sections with one or more modules combined. ID selectors are common to Layout as a lot of Layout definitions will only be used once per page. 
+
+*Modules* The bulk of the css, made up of modules and submodules. Each module should be independent of its context and should work within any layout container or other module.
+
+*State* Different states of modules (i.e. .is-active, psuedo-classes like :hover or :focus, data-attributes, etc). They describe how modules/layouts look in various settings like large/small screens, the home page, etc.
+
+*Theme^* Optional. Similar to states since they describe how modules/layouts might work, and is currently not being used.
+
+**** OOCSS / Utility Classes
+By and large any classes following the [[https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/][OOCSS principal]] in our codebase should be immutable, such that after initial definition these classes should neither be redefined or extended. 
+
+*** HTML Structure Gotchas
+**** Header and Footer
+The header and footer sections can have any type of element as children. Do not put strings as direct descendents of the header section, but instead wrap them in at least one HTML element (div, span, section, etc).
+
+** Grid Structure and Fallback for older browsers
+At the time of this writing, the [[https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout][CSS Grid]] layout is not currently supported by all of the browsers that our website needs to support. However, CSS Grid offers a lot of advantages over older css positioning including flexbox layout; specifically it allows for two-dimensional layouts (columns and rows) where all previous positioning, with the exception of tables, was one dimensional.
+
+In order to support CSS Grid, there are a number of approaches. The @supports is one of the more popular techniques, however, not all browsers support the @support rule, and some browsers who do support grid handle grid parameters differently than the current spec creating difficult to manage stylesheets.
+
+The approach we use to support CSS Grid is using the standard inheritance nature of CSS. For browsers who don't support any or all of CSS Grid (i.e. IE11 and below), we have an additional stylesheet that gets dynamically loaded at runtime and overrides the grid parameters.
+

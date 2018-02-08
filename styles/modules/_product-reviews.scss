@@ -1,0 +1,122 @@
+.product-reviews-header {
+	display: grid;
+	margin-bottom: $spacer;
+	@include media (">=tablet") { grid-template-columns: repeat(2, 1fr); }
+
+	.start-review { text-align: center; }
+}
+
+.product-reviews-tabs {
+	&:after {
+		@include hr-psuedo();
+		margin-top: -1px;
+	}
+
+	li {
+		cursor: pointer;
+		display: inline-block;
+		border: 1px solid $gray-100;
+		padding: $spacer;
+		background-color: $gray-50;
+		margin-left: $spacer;
+		width: calc(100% - (4 * #{$spacer}));
+
+		&:nth-child(1) { border-radius: 4px 4px 0 0;}
+
+		@include media (">tablet") {
+			width: auto;
+			border-radius: 4px 4px 0 0;
+		}
+
+		&.active {
+			background-color: transparent;
+			color: $blue;
+			border-bottom-color: $white;
+		}
+	}
+}
+
+.review {
+	.review-info {
+		border: 1px solid $aqua;
+		margin: $spacer 0;
+		padding: $spacer / 2;
+		border-radius: 3px;
+		background: $debonair;
+
+		> * {
+			margin: $spacer / 2 0;
+			width: 100%;
+			float: left;
+		}
+
+		@include media (">=phone") {
+			> *:nth-child(1) { width: 50%; }
+			.review-date {
+				width: 50%;
+				text-align: right;
+				float: right;
+				margin-top: -5.5rem;
+			}
+		}
+
+		@include clearfix;
+	}
+
+	.review-details {
+		display: grid;
+		text-align: center;
+
+		> * { padding: $spacer / 2; }
+
+		@include media (">=phone") {
+			grid-template-columns: repeat(4, 1fr);
+
+			.review-content {
+				text-align: left;
+				grid-column-start: 1;
+				grid-column-end: 5;
+			}
+		}
+
+		@include media (">=tablet") {
+			> div {
+				grid-template-columns: 1fr 3fr;
+				grid-column-start: 1;
+				grid-column-end: 2;
+			}
+			.review-content {
+				grid-column-start: 2;
+				grid-column-end: 5;
+				grid-row-start: 1;
+				grid-row-end: 5;
+			}
+		}
+
+		.review-source { text-align: right; }
+	}
+}
+
+.additional-review-actions {
+	@include clearfix;
+
+	> * {
+		width: 100%;
+		text-align: center;
+		margin: $spacer / 2 0;
+		position: relative;
+		float: left;
+	}
+
+	@include media (">=phone") {
+		> *:nth-child(1) {
+			text-align: left;
+			width: 30%;
+		}
+
+		> *:nth-child(2) {
+			width: 70%;
+			text-align: right;
+		}
+	}
+}

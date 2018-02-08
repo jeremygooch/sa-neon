@@ -1,0 +1,9 @@
+// Margins and Padding
+@each $prop, $label in (margin: u-m, padding: u-p) {
+	@each $size, $length in $spacers {
+		.#{$label}t-#{$size} { #{$prop}-top: $length !important; }
+		.#{$label}r-#{$size} { #{$prop}-right: $length !important; }
+		.#{$label}b-#{$size} { #{$prop}-bottom: $length !important; }
+		.#{$label}l-#{$size} { #{$prop}-left: $length !important; }
+	}
+}

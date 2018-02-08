@@ -1,0 +1,73 @@
+// Base Units
+$spacer:     1rem !default;
+$spacers:    () !default;
+$spacers:    map-merge((
+    0:  0,
+    1:	($spacer * 0.25),
+    2:	($spacer * 0.5),
+    3:	($spacer),
+    4:	($spacer * 1.25),
+    5:	($spacer * 3),
+), $spacers);
+
+
+// Color Pallet
+$gray-50:            #f2f2f2 !default; // hr
+$gray-100:           #ddd !default; // hr
+$gray-200:           #d8d8d8 !default; // slideshow bg
+$gray-300:           #ccc !default; // average review score (top)
+$gray-400:           #999 !default; // breadcrumbs
+$gray-500:           #8d8d8d !default; // disabled button background
+$gray-600:           #808080 !default; // supported OS'
+$gray-700:           #4d4d4d !default; // main/body text
+$gray-900:           #333 !default; // header bg
+
+$white:              #fff !default;
+$blue:               #1f89c7 !default; // link color
+$debonair:           #e9f5fc !default; // date box bg
+$aqua:               #bde0f5 !default; // date box border
+$midnight:           #344e67 !default; // h3 (review title)
+$yellow:             #fcbc50 !default; // stars
+$orange:             #ff851f !default; // button
+$pumpkin:            #e56800 !default; // button border
+$black:              #000 !default;
+
+$dark:               $gray-900 !default;
+$light:              $gray-200 !default;
+$primary-text:       $gray-700 !default;
+$secondary-text:     $midnight !default;
+
+
+// font sizes
+$font-size-base:		 1rem !default;
+$font-size-lg:			 ($font-size-base * 1.25) !default;
+$font-size-sm:			 ($font-size-base * 0.8125) !default;
+$font-size-xsm:			 ($font-size-base * 0.6875) !default;
+
+$font-weight-light:		 300 !default;
+$font-weight-normal:	 400 !default;
+$font-weight-bold:		 700 !default;
+
+$h1-font-size:			 $font-size-base * 2.0 !default;
+$h1-phone-font-size:     $font-size-base * 1.5 !default;
+$h2-font-size:			 $font-size-base * 1.5 !default;
+$h2-phone-font-size:     $font-size-base * 1.2 !default;
+$h3-font-size:			 $font-size-base * 1.25 !default;
+$h3-phone-font-size:     $font-size-base * 1.125 !default;
+$h5-font-size:			 $font-size-base * 0.875 !default;
+$h5-phone-font-size:     $font-size-base !default;
+
+
+// Resolution Breakpoints
+$phone-size:     481px !default;
+$tablet-size:    768px !default;
+$desktop-size:   1024px !default;
+
+$resolutions:    () !default;
+$resolutions:    map-merge((
+    "phone":    $phone-size,
+    "tablet":   $tablet-size,
+    "desktop":  $desktop-size
+), $resolutions);
+
+$breakpoints:    (phone: $phone-size, tablet: $tablet-size, desktop: $desktop-size);

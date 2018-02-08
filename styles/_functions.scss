@@ -1,0 +1,44 @@
+/*
+ * Desciption: Creates centered content with a maximum size
+ *     that the content will not scale beyond.
+ *
+ * @param {String} $size - Maximum size described as 'phone',
+ *     'tablet', or 'desktop'. See variable $breakpoints
+ */
+@mixin _set-max-and-overflow-center($size) {
+	max-width: $size;
+	margin-left: $spacer;
+	margin-right: $spacer;
+	@each $prop, $value in $resolutions {
+		@if $value == $size {
+			@include media(">=#{$prop}") {
+				padding-left: $spacer;
+				padding-right: $spacer;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+}
+
+
+@mixin _ie_grid_template_columns($widths) {
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		> * {
+			position: relative;
+			float: left;
+		}
+		@for $i from 1 through length($widths) {
+			> *:nth-child(#{$i}) {
+				width: map-get($widths, $i);
+				max-width: map-get($widths, $i);
+			}
+		}
+		&:after { // Prevent the parent from collapsing due to the floats
+			content: " ";
+			display: block;
+			height: 0;
+			clear: both;
+		}
+	}
+}

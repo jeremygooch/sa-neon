@@ -1,0 +1,61 @@
+/*
+ * Description: Divides the page into sections with one or more modules combined.
+ *     Element level selectors are common to _layout.scss as a lot of layout
+ *     definitions will only be used once per page.
+ */
+
+header, footer {
+	background-color: $dark;
+	color: $white;
+	padding: $spacer 0;
+	font-size: $font-size-sm;
+	margin-bottom: $spacer;
+
+	> * {
+		@include _set-max-and-overflow-center($desktop-size);
+	}
+}
+
+footer { margin-bottom: 0; }
+
+#main-content {
+	color: $primary-text;
+
+	> * {
+		@include _set-max-and-overflow-center($desktop-size);
+	}
+}
+
+#product-profile {
+	.product-details {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		margin-bottom: 1.5rem;
+
+		> * {
+			padding: ($spacer / 2) 0;
+		}
+
+		> *:nth-child(5), > *:nth-child(6) {
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
+
+		@include media (">=tablet") {
+			grid-template-columns: 22% 22% 28% 28%;
+
+			> *:nth-child(6) {
+				grid-column-start: 3;
+				grid-column-end: 5;
+			}
+		}
+	}
+}
+
+#product-reviews {
+	margin-bottom: 1.25rem;
+
+	&:before {
+		@include hr-psuedo();
+	}
+}

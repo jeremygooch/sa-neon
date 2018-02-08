@@ -1,0 +1,25 @@
+.breadcrumbs { display: none; }
+
+@include media(">=phone") {
+	.breadcrumbs {
+		display: block;
+		margin-bottom: map-get($spacers, 4);
+
+		& > li {
+			display: inline-block;
+			font-size: $font-size-xsm;
+			color: $gray-400;
+
+			& > a {
+				color: $gray-400;
+
+				&:after {
+					content: ">";
+					display: inline-block;
+					margin-left: $spacer * 0.25;
+					@include size($spacer * 0.5, $spacer);
+				}
+			}
+		}
+	}
+}

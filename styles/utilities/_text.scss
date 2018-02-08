@@ -1,0 +1,3 @@
+@each $prop in (left, right, center, justify) {
+	.text-#{$prop} { text-align: $prop !important; }
+}

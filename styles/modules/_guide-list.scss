@@ -1,0 +1,9 @@
+.guide-list {
+	margin-top: 2rem;
+	display: grid;
+	@include media (">=phone") { grid-template-columns: 1fr 1fr; }
+	@include media (">=tablet") { grid-template-columns: 1fr 1fr 1fr; }
+
+	li { margin-bottom: $spacer; }
+	a { text-decoration: none; }
+}

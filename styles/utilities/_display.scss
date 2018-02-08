@@ -1,0 +1,3 @@
+@each $prop in (none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex) {
+	.u-d-#{$prop} { display: $prop !important; }
+}
